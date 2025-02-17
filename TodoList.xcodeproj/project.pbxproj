@@ -7,10 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DDAB58702D62D62C00DA7C28 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DDAB586F2D62D62C00DA7C28 /* RxSwift */; };
+		DDAB58722D62D69400DA7C28 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = DDAB58712D62D69400DA7C28 /* RxCocoa */; };
 		DDCC1F022D62B0E20006C15E /* TodoListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCC1F012D62B0E20006C15E /* TodoListApp.swift */; };
 		DDCC1F042D62B0E20006C15E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCC1F032D62B0E20006C15E /* ContentView.swift */; };
 		DDCC1F062D62B0E40006C15E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDCC1F052D62B0E40006C15E /* Assets.xcassets */; };
 		DDCC1F092D62B0E40006C15E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDCC1F082D62B0E40006C15E /* Preview Assets.xcassets */; };
+		DDCC1F102D62B12E0006C15E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCC1F0F2D62B12D0006C15E /* HomeView.swift */; };
+		DDCC1F122D62B90A0006C15E /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCC1F112D62B90A0006C15E /* RadioButton.swift */; };
+		DDCC1F142D62C4DE0006C15E /* TodoStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCC1F132D62C4DE0006C15E /* TodoStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +24,9 @@
 		DDCC1F032D62B0E20006C15E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DDCC1F052D62B0E40006C15E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DDCC1F082D62B0E40006C15E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DDCC1F0F2D62B12D0006C15E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		DDCC1F112D62B90A0006C15E /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		DDCC1F132D62C4DE0006C15E /* TodoStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoStorage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,17 +34,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDAB58722D62D69400DA7C28 /* RxCocoa in Frameworks */,
+				DDAB58702D62D62C00DA7C28 /* RxSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DDAB586E2D62D62C00DA7C28 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DDCC1EF52D62B0E20006C15E = {
 			isa = PBXGroup;
 			children = (
 				DDCC1F002D62B0E20006C15E /* TodoList */,
 				DDCC1EFF2D62B0E20006C15E /* Products */,
+				DDAB586E2D62D62C00DA7C28 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -53,7 +71,10 @@
 			children = (
 				DDCC1F012D62B0E20006C15E /* TodoListApp.swift */,
 				DDCC1F032D62B0E20006C15E /* ContentView.swift */,
+				DDCC1F0F2D62B12D0006C15E /* HomeView.swift */,
 				DDCC1F052D62B0E40006C15E /* Assets.xcassets */,
+				DDCC1F112D62B90A0006C15E /* RadioButton.swift */,
+				DDCC1F132D62C4DE0006C15E /* TodoStorage.swift */,
 				DDCC1F072D62B0E40006C15E /* Preview Content */,
 			);
 			path = TodoList;
@@ -83,6 +104,10 @@
 			dependencies = (
 			);
 			name = TodoList;
+			packageProductDependencies = (
+				DDAB586F2D62D62C00DA7C28 /* RxSwift */,
+				DDAB58712D62D69400DA7C28 /* RxCocoa */,
+			);
 			productName = TodoList;
 			productReference = DDCC1EFE2D62B0E20006C15E /* TodoList.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +136,9 @@
 				Base,
 			);
 			mainGroup = DDCC1EF52D62B0E20006C15E;
+			packageReferences = (
+				DDCC1F152D62C5EB0006C15E /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = DDCC1EFF2D62B0E20006C15E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,7 +166,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDCC1F042D62B0E20006C15E /* ContentView.swift in Sources */,
+				DDCC1F142D62C4DE0006C15E /* TodoStorage.swift in Sources */,
+				DDCC1F102D62B12E0006C15E /* HomeView.swift in Sources */,
 				DDCC1F022D62B0E20006C15E /* TodoListApp.swift in Sources */,
+				DDCC1F122D62B90A0006C15E /* RadioButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +375,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DDCC1F152D62C5EB0006C15E /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.8.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DDAB586F2D62D62C00DA7C28 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DDCC1F152D62C5EB0006C15E /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		DDAB58712D62D69400DA7C28 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DDCC1F152D62C5EB0006C15E /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DDCC1EF62D62B0E20006C15E /* Project object */;
 }
