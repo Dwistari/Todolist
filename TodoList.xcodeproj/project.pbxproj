@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD78201E2D6597DE0058522D /* TaskData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DD78201C2D6597DE0058522D /* TaskData.xcdatamodeld */; };
+		DD7820212D6598200058522D /* Todo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD78201F2D6598200058522D /* Todo+CoreDataClass.swift */; };
+		DD7820222D6598200058522D /* Todo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7820202D6598200058522D /* Todo+CoreDataProperties.swift */; };
 		DDAB58702D62D62C00DA7C28 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DDAB586F2D62D62C00DA7C28 /* RxSwift */; };
 		DDAB58722D62D69400DA7C28 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = DDAB58712D62D69400DA7C28 /* RxCocoa */; };
 		DDCC1F022D62B0E20006C15E /* TodoListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCC1F012D62B0E20006C15E /* TodoListApp.swift */; };
@@ -16,9 +19,13 @@
 		DDCC1F102D62B12E0006C15E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCC1F0F2D62B12D0006C15E /* HomeView.swift */; };
 		DDCC1F122D62B90A0006C15E /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCC1F112D62B90A0006C15E /* RadioButton.swift */; };
 		DDCC1F142D62C4DE0006C15E /* TodoStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCC1F132D62C4DE0006C15E /* TodoStorage.swift */; };
+		DDD8A7502D64CE2500EBF1F0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD8A74F2D64CE2500EBF1F0 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DD78201D2D6597DE0058522D /* TaskData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskData.xcdatamodel; sourceTree = "<group>"; };
+		DD78201F2D6598200058522D /* Todo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todo+CoreDataClass.swift"; sourceTree = "<group>"; };
+		DD7820202D6598200058522D /* Todo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		DDCC1EFE2D62B0E20006C15E /* TodoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDCC1F012D62B0E20006C15E /* TodoListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListApp.swift; sourceTree = "<group>"; };
 		DDCC1F032D62B0E20006C15E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -27,6 +34,7 @@
 		DDCC1F0F2D62B12D0006C15E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		DDCC1F112D62B90A0006C15E /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		DDCC1F132D62C4DE0006C15E /* TodoStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoStorage.swift; sourceTree = "<group>"; };
+		DDD8A74F2D64CE2500EBF1F0 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,12 +77,14 @@
 		DDCC1F002D62B0E20006C15E /* TodoList */ = {
 			isa = PBXGroup;
 			children = (
+				DDD8A7582D64D61800EBF1F0 /* CoreData */,
 				DDCC1F012D62B0E20006C15E /* TodoListApp.swift */,
 				DDCC1F032D62B0E20006C15E /* ContentView.swift */,
 				DDCC1F0F2D62B12D0006C15E /* HomeView.swift */,
 				DDCC1F052D62B0E40006C15E /* Assets.xcassets */,
 				DDCC1F112D62B90A0006C15E /* RadioButton.swift */,
 				DDCC1F132D62C4DE0006C15E /* TodoStorage.swift */,
+				DDD8A74F2D64CE2500EBF1F0 /* CoreDataManager.swift */,
 				DDCC1F072D62B0E40006C15E /* Preview Content */,
 			);
 			path = TodoList;
@@ -86,6 +96,16 @@
 				DDCC1F082D62B0E40006C15E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DDD8A7582D64D61800EBF1F0 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				DD78201F2D6598200058522D /* Todo+CoreDataClass.swift */,
+				DD7820202D6598200058522D /* Todo+CoreDataProperties.swift */,
+				DD78201C2D6597DE0058522D /* TaskData.xcdatamodeld */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,8 +187,12 @@
 			files = (
 				DDCC1F042D62B0E20006C15E /* ContentView.swift in Sources */,
 				DDCC1F142D62C4DE0006C15E /* TodoStorage.swift in Sources */,
+				DD78201E2D6597DE0058522D /* TaskData.xcdatamodeld in Sources */,
 				DDCC1F102D62B12E0006C15E /* HomeView.swift in Sources */,
+				DDD8A7502D64CE2500EBF1F0 /* CoreDataManager.swift in Sources */,
 				DDCC1F022D62B0E20006C15E /* TodoListApp.swift in Sources */,
+				DD7820212D6598200058522D /* Todo+CoreDataClass.swift in Sources */,
+				DD7820222D6598200058522D /* Todo+CoreDataProperties.swift in Sources */,
 				DDCC1F122D62B90A0006C15E /* RadioButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -399,6 +423,20 @@
 			productName = RxCocoa;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		DD78201C2D6597DE0058522D /* TaskData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DD78201D2D6597DE0058522D /* TaskData.xcdatamodel */,
+			);
+			currentVersion = DD78201D2D6597DE0058522D /* TaskData.xcdatamodel */;
+			name = TaskData.xcdatamodeld;
+			path = /Users/dwistari/Documents/Development/iOS/TodoList/TodoList/CoreData/TaskData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = DDCC1EF62D62B0E20006C15E /* Project object */;
 }

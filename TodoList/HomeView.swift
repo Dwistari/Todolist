@@ -7,10 +7,14 @@
 
 import SwiftUI
 import RxSwift
+import CoreData
 
 struct HomeView: View {
     @State private var input = ""
-    @State private var tasks: [String] = []
+    @State private var tasks: [Todo] = []
+    @State private var date = Date.now
+    @State private var selectedDate = Date()
+
     let disposeBag = DisposeBag()
     
     var body: some View {
@@ -21,17 +25,7 @@ struct HomeView: View {
                     .border(Color.gray)
                     .padding(.leading, 10)
                 Button("Add") {
-                    tasks.append(input)
-                    TodoStorage.saveTodos(tasks)
-                        .subscribe(
-                            onCompleted: {
-                                print("Todos saved successfully!")
-                            },
-                            onError: { error in
-                                print("Failed to save todos: \(error)")
-                            }
-                        )
-                        .dispose()
+                    saveData()
                 }
                 .padding()
                 .background(.blue)
@@ -40,17 +34,33 @@ struct HomeView: View {
                 .frame(width: 100, height: 100)
             }
             
-            List {
-                ForEach(Array(tasks.enumerated()), id: \.element) { index, task in
-                    TaskRow(taskName: task, didRemoveTodo: {
-                        print("didRemoveTodo")
-                      removeTask(at: index)
-                    })
-                    .listRowBackground(Color.clear)
-                    .listRowSeparator(.hidden)
+            DatePicker("Select Date", selection: $date, displayedComponents: .date)
+                .labelsHidden()
+                .onChange(of: date) { oldDate, newDate in
+                    loadTasks()
                 }
+            
+            Spacer()
+
+            if tasks.isEmpty {
+                Text("No tasks available")
+                    .foregroundColor(.gray)
+                    .italic()
+            } else {
+                List {
+                    ForEach(Array(tasks.enumerated()), id: \.element) { index, task in
+                        TaskRow(taskName: task.name ?? "", didRemoveTodo: {
+                            removeTask(id: task.objectID)
+                        })
+                        
+                        .listRowBackground(Color.clear)
+                        .listRowSeparator(.hidden)
+                    }
+                }
+                .buttonStyle(PlainButtonStyle())
             }
-            .buttonStyle(PlainButtonStyle())
+            
+            Spacer()
         }
         .onAppear{
             loadTasks()
@@ -58,12 +68,26 @@ struct HomeView: View {
         
     }
     
+    
+    private func saveData() {
+        CoreDataManager.shared.saveContext(name: input, date: Date())
+            .subscribe(
+                onSuccess: {
+                    input = ""
+                    loadTasks()
+                },
+                onFailure: { error in
+                    print("Failed to save todos: \(error)")
+                }
+            )
+            .disposed(by: disposeBag)
+    }
+    
     private func loadTasks() {
-        TodoStorage.loadTodos()
+        CoreDataManager.shared.loadTodos(on: date)
             .subscribe(
                 onSuccess: { todos in
                     tasks = todos
-                    print("Loaded todos: \(todos)")
                 },
                 onFailure: { error in
                     print("Failed to load todos: \(error)")
@@ -73,11 +97,10 @@ struct HomeView: View {
             .disposed(by: disposeBag)
     }
     
-    private func removeTask(at index: Int) {
-        TodoStorage.removeTodo(at: index)
+    private func removeTask(id: NSManagedObjectID) {
+        CoreDataManager.shared.removeTodo(id: id)
             .subscribe(
                 onCompleted: {
-                    print("Todos removed successfully!")
                     loadTasks()
                 },
                 onError: { error in
@@ -86,6 +109,20 @@ struct HomeView: View {
                 
             )
             .disposed(by: disposeBag)
+    }
+    
+    private func getCurrentDate() -> String {
+        let currentDate = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        let dateString = dateFormatter.string(from: currentDate)
+        return dateString
+    }
+    
+    private func formattedDate(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium  // Format tanggal
+        return formatter.string(from: date)
     }
 }
 
