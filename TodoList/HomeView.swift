@@ -49,8 +49,10 @@ struct HomeView: View {
             } else {
                 List {
                     ForEach(Array(tasks.enumerated()), id: \.element) { index, task in
-                        TaskRow(taskName: task.name ?? "", didRemoveTodo: {
+                        TaskRow(isSelected: task.isFinished, taskName: task.name ?? "", didRemoveTodo: {
                             removeTask(id: task.objectID)
+                        }, didCheckedTodo: { isChecked in
+                            updateTask(isFinished: isChecked, id: task.objectID)
                         })
                         
                         .listRowBackground(Color.clear)
@@ -111,6 +113,20 @@ struct HomeView: View {
             .disposed(by: disposeBag)
     }
     
+    private func updateTask(isFinished: Bool, id: NSManagedObjectID) {
+        CoreDataManager.shared.updateTask(isFinished: isFinished, id: id)
+            .subscribe(
+                onSuccess: {
+                    loadTasks()
+                },
+                onFailure: { error in
+                    print("Failed removed todos: \(error)")
+                }
+                
+            )
+            .disposed(by: disposeBag)
+    }
+    
     private func getCurrentDate() -> String {
         let currentDate = Date()
         let dateFormatter = DateFormatter()
@@ -128,15 +144,16 @@ struct HomeView: View {
 
 
 struct TaskRow: View {
-    @State private var isSelected: Bool = false
+    @State var isSelected: Bool
     @State var taskName: String
     var didRemoveTodo: (() -> Void)
-    
-    
+    var didCheckedTodo: ((_ isChecked: Bool) -> Void)
+
     var body: some View {
         HStack {
             RadioButton(isSelected: isSelected) {
                 isSelected.toggle()
+                didCheckedTodo(isSelected)
             }
             .frame(width: 40, height: 40)
             Text(taskName)

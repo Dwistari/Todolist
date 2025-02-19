@@ -44,6 +44,25 @@ class CoreDataManager {
         }
     }
     
+    
+    func updateTask(isFinished: Bool, id: NSManagedObjectID) -> Single<Void> {
+        return Single.create { [self] single in
+            do {
+                if let taskToUpdate = try self.context.existingObject(with: id) as? Todo {
+                    taskToUpdate.isFinished = isFinished
+                } else {
+                    single(.failure(NSError(domain: "TaskNotFound", code: 404, userInfo: nil)))
+                }
+                try context.save()
+                single(.success(()))
+                
+            } catch {
+                single(.failure(error))
+            }
+            return Disposables.create()
+        }
+    }
+    
     func loadTodos(on date: Date) -> Single<[Todo]> {
         
         let calendar = Calendar.current
