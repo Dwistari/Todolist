@@ -27,8 +27,9 @@ struct HomeView: View {
                 Button("Add") {
                     saveData()
                 }
+                .disabled(input.isEmpty)
                 .padding()
-                .background(.blue)
+                .background(input.isEmpty ? .gray : .blue )
                 .foregroundColor(.white)
                 .cornerRadius(10)
                 .frame(width: 100, height: 100)
