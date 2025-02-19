@@ -12,8 +12,10 @@ import CoreData
 struct HomeView: View {
     @State private var input = ""
     @State private var tasks: [Todo] = []
+    @State private var taskID: NSManagedObjectID?
     @State private var date = Date.now
     @State private var selectedDate = Date()
+    @State private var showAlert = false
 
     let disposeBag = DisposeBag()
     
@@ -24,15 +26,18 @@ struct HomeView: View {
                     .padding()
                     .border(Color.gray)
                     .padding(.leading, 10)
-                Button("Add") {
-                    saveData()
+                Button(action: {
+                    saveTasks()
+                }) {
+                    Image(systemName: "plus")
+                        .frame(width: 40, height: 40)
+                        .background(input.isEmpty ? .gray : .blue )
+                        .foregroundColor(input.isEmpty ? .black : .white )
+                        .cornerRadius(10)
+                        .padding(.trailing, 16)
+                        .disabled(input.isEmpty)
                 }
-                .disabled(input.isEmpty)
-                .padding()
-                .background(input.isEmpty ? .gray : .blue )
-                .foregroundColor(.white)
-                .cornerRadius(10)
-                .frame(width: 100, height: 100)
+
             }
             
             DatePicker("Select Date", selection: $date, displayedComponents: .date)
@@ -40,18 +45,20 @@ struct HomeView: View {
                 .onChange(of: date) { newDate in
                     loadTasks()
                 }
+                .padding()
             
             Spacer()
 
             if tasks.isEmpty {
-                Text("No tasks available")
+                Text("No tasks yet. Add a new task!")
                     .foregroundColor(.gray)
                     .italic()
             } else {
                 List {
                     ForEach(Array(tasks.enumerated()), id: \.element) { index, task in
                         TaskRow(isSelected: task.isFinished, taskName: task.name ?? "", didRemoveTodo: {
-                            removeTask(id: task.objectID)
+                            taskID = task.objectID
+                            showAlert = true
                         }, didCheckedTodo: { isChecked in
                             updateTask(isFinished: isChecked, id: task.objectID)
                         })
@@ -65,6 +72,20 @@ struct HomeView: View {
             
             Spacer()
         }
+        .alert(isPresented: $showAlert) {
+              Alert(
+                  title: Text("Delete Task"),
+                  message: Text("Are you sure you want to delete this task?"),
+                  primaryButton: .destructive(Text("Delete")) {
+                      if let id = taskID {
+                          deleteTask(id: id)
+                      }
+                      print("Task deleted!")
+                  },
+                  secondaryButton: .cancel()
+              )
+          }
+        
         .onAppear{
             loadTasks()
         }
@@ -72,7 +93,7 @@ struct HomeView: View {
     }
     
     
-    private func saveData() {
+    private func saveTasks() {
         CoreDataManager.shared.saveContext(name: input, date: Date())
             .subscribe(
                 onSuccess: {
@@ -100,7 +121,7 @@ struct HomeView: View {
             .disposed(by: disposeBag)
     }
     
-    private func removeTask(id: NSManagedObjectID) {
+    private func deleteTask(id: NSManagedObjectID) {
         CoreDataManager.shared.removeTodo(id: id)
             .subscribe(
                 onCompleted: {
@@ -127,6 +148,7 @@ struct HomeView: View {
             )
             .disposed(by: disposeBag)
     }
+    
     
     private func getCurrentDate() -> String {
         let currentDate = Date()
