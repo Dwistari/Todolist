@@ -18,7 +18,6 @@
 		DDCC1F092D62B0E40006C15E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDCC1F082D62B0E40006C15E /* Preview Assets.xcassets */; };
 		DDCC1F102D62B12E0006C15E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCC1F0F2D62B12D0006C15E /* HomeView.swift */; };
 		DDCC1F122D62B90A0006C15E /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCC1F112D62B90A0006C15E /* RadioButton.swift */; };
-		DDCC1F142D62C4DE0006C15E /* TodoStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCC1F132D62C4DE0006C15E /* TodoStorage.swift */; };
 		DDD8A7502D64CE2500EBF1F0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD8A74F2D64CE2500EBF1F0 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,7 +32,6 @@
 		DDCC1F082D62B0E40006C15E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DDCC1F0F2D62B12D0006C15E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		DDCC1F112D62B90A0006C15E /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
-		DDCC1F132D62C4DE0006C15E /* TodoStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoStorage.swift; sourceTree = "<group>"; };
 		DDD8A74F2D64CE2500EBF1F0 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,7 +81,6 @@
 				DDCC1F0F2D62B12D0006C15E /* HomeView.swift */,
 				DDCC1F052D62B0E40006C15E /* Assets.xcassets */,
 				DDCC1F112D62B90A0006C15E /* RadioButton.swift */,
-				DDCC1F132D62C4DE0006C15E /* TodoStorage.swift */,
 				DDD8A74F2D64CE2500EBF1F0 /* CoreDataManager.swift */,
 				DDCC1F072D62B0E40006C15E /* Preview Content */,
 			);
@@ -186,7 +183,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDCC1F042D62B0E20006C15E /* ContentView.swift in Sources */,
-				DDCC1F142D62C4DE0006C15E /* TodoStorage.swift in Sources */,
 				DD78201E2D6597DE0058522D /* TaskData.xcdatamodeld in Sources */,
 				DDCC1F102D62B12E0006C15E /* HomeView.swift in Sources */,
 				DDD8A7502D64CE2500EBF1F0 /* CoreDataManager.swift in Sources */,
