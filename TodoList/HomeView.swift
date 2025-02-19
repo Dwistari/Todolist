@@ -37,7 +37,7 @@ struct HomeView: View {
             
             DatePicker("Select Date", selection: $date, displayedComponents: .date)
                 .labelsHidden()
-                .onChange(of: date) { oldDate, newDate in
+                .onChange(of: date) { newDate in
                     loadTasks()
                 }
             
@@ -160,6 +160,7 @@ struct TaskRow: View {
             Text(taskName)
                 .strikethrough(isSelected, color: .black)
                 .frame(maxWidth: .infinity, alignment: .leading)
+                .foregroundColor(.black)
             Button(action: {
                 didRemoveTodo()
             }) {
