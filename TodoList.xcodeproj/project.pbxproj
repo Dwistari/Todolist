@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD0F84992D67044700706178 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0F84982D67044700706178 /* TaskRow.swift */; };
 		DD78201E2D6597DE0058522D /* TaskData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DD78201C2D6597DE0058522D /* TaskData.xcdatamodeld */; };
 		DD7820212D6598200058522D /* Todo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD78201F2D6598200058522D /* Todo+CoreDataClass.swift */; };
 		DD7820222D6598200058522D /* Todo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7820202D6598200058522D /* Todo+CoreDataProperties.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DD0F84982D67044700706178 /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
 		DD78201D2D6597DE0058522D /* TaskData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskData.xcdatamodel; sourceTree = "<group>"; };
 		DD78201F2D6598200058522D /* Todo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todo+CoreDataClass.swift"; sourceTree = "<group>"; };
 		DD7820202D6598200058522D /* Todo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todo+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				DDCC1F112D62B90A0006C15E /* RadioButton.swift */,
 				DDD8A74F2D64CE2500EBF1F0 /* CoreDataManager.swift */,
 				DDCC1F072D62B0E40006C15E /* Preview Content */,
+				DD0F84982D67044700706178 /* TaskRow.swift */,
 			);
 			path = TodoList;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 				DDD8A7502D64CE2500EBF1F0 /* CoreDataManager.swift in Sources */,
 				DDCC1F022D62B0E20006C15E /* TodoListApp.swift in Sources */,
 				DD7820212D6598200058522D /* Todo+CoreDataClass.swift in Sources */,
+				DD0F84992D67044700706178 /* TaskRow.swift in Sources */,
 				DD7820222D6598200058522D /* Todo+CoreDataProperties.swift in Sources */,
 				DDCC1F122D62B90A0006C15E /* RadioButton.swift in Sources */,
 			);
